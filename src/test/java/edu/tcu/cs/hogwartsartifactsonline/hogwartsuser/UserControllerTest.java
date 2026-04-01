@@ -55,7 +55,6 @@ class UserControllerTest {
         u1.setPassword("123456");
         u1.setEnabled(true);
         u1.setRoles("admin user");
-        this.users.add(u1);
 
         HogwartsUser u2 = new HogwartsUser();
         u2.setId(2);
@@ -63,7 +62,6 @@ class UserControllerTest {
         u2.setPassword("654321");
         u2.setEnabled(true);
         u2.setRoles("user");
-        this.users.add(u2);
 
         HogwartsUser u3 = new HogwartsUser();
         u3.setId(3);
@@ -71,6 +69,9 @@ class UserControllerTest {
         u3.setPassword("qwerty");
         u3.setEnabled(false);
         u3.setRoles("user");
+
+        this.users.add(u1);
+        this.users.add(u2);
         this.users.add(u3);
     }
 

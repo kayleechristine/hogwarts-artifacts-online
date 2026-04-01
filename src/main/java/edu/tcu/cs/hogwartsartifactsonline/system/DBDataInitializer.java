@@ -3,7 +3,7 @@ package edu.tcu.cs.hogwartsartifactsonline.system;
 import edu.tcu.cs.hogwartsartifactsonline.artifact.Artifact;
 import edu.tcu.cs.hogwartsartifactsonline.artifact.ArtifactRepository;
 import edu.tcu.cs.hogwartsartifactsonline.hogwartsuser.HogwartsUser;
-import edu.tcu.cs.hogwartsartifactsonline.hogwartsuser.UserRepository;
+import edu.tcu.cs.hogwartsartifactsonline.hogwartsuser.UserService;
 import edu.tcu.cs.hogwartsartifactsonline.wizard.Wizard;
 import edu.tcu.cs.hogwartsartifactsonline.wizard.WizardRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -14,16 +14,16 @@ public class DBDataInitializer implements CommandLineRunner {
 
     private final ArtifactRepository artifactRepository;
     private final WizardRepository wizardRepository;
-    private final UserRepository userRepository;
+    private final UserService userService;
 
     public DBDataInitializer(
             ArtifactRepository artifactRepository,
             WizardRepository wizardRepository,
-            UserRepository userRepository) {
+            UserService userService) {
 
         this.artifactRepository = artifactRepository;
         this.wizardRepository = wizardRepository;
-        this.userRepository = userRepository;
+        this.userService = userService;
     }
 
     @Override
@@ -90,29 +90,29 @@ public class DBDataInitializer implements CommandLineRunner {
 
 
         HogwartsUser u1 = new HogwartsUser();
-//        u1.setId(1);
-        u1.setUsername("jimothy");
-        u1.setPassword("password");
+        u1.setId(1);
+        u1.setUsername("john");
+        u1.setPassword("123456");
         u1.setEnabled(true);
         u1.setRoles("admin user");
 
         HogwartsUser u2 = new HogwartsUser();
-//        u2.setId(2);
-        u2.setUsername("bobert");
-        u2.setPassword("qwertyuiop");
-        u2.setEnabled(false);
+        u2.setId(2);
+        u2.setUsername("eric");
+        u2.setPassword("654321");
+        u2.setEnabled(true);
         u2.setRoles("user");
 
         HogwartsUser u3 = new HogwartsUser();
-//        u3.setId(3);
-        u3.setUsername("timantha");
-        u3.setPassword("1234567");
-        u3.setEnabled(true);
+        u3.setId(3);
+        u3.setUsername("tom");
+        u3.setPassword("qwerty");
+        u3.setEnabled(false);
         u3.setRoles("user");
 
-        this.userRepository.save(u1);
-        this.userRepository.save(u2);
-        this.userRepository.save(u3);
+        this.userService.save(u1);
+        this.userService.save(u2);
+        this.userService.save(u3);
     }
 
 }
